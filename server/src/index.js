@@ -1,16 +1,6 @@
 const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./schema");
 
-const server = new ApolloServer({ typeDefs, mocks });
-
-server.listen().then(() => {
-  console.log(`
-      🚀  Server is running!
-      🔉  Listening on port 4000
-      📭  Query at http://localhost:4000
-    `);
-});
-
 const mocks = {
   Query: () => ({
     tracksForHome: () => [...new Array(6)],
@@ -31,3 +21,13 @@ const mocks = {
     modulesCount: () => 6,
   }),
 };
+
+const server = new ApolloServer({ typeDefs, mocks });
+
+server.listen().then(() => {
+  console.log(`
+      🚀  Server is running!
+      🔉  Listening on port 4000
+      📭  Query at http://localhost:4000
+    `);
+});
